@@ -6,14 +6,14 @@ import styled from 'styled-components/native';
 type Product = {
   id: string;
   title: string;
-  price: number;
+  price: string;
 };
 
 const products: Product[] = [
   {
     id: "1",
-    title: "Tenis",
-    price: 150,
+    title: "Livros",
+    price: "Livro Ingles",
   }
 ]
 
@@ -21,8 +21,8 @@ export default function App() {
   return (
     <ScreenContainer>
       <Header>
-        <ScreenTitle>Loja</ScreenTitle>
-        <SearchInput placeholder="Buscar produtos" />
+        <ScreenTitle>Biblioteca</ScreenTitle>
+        <SearchInput placeholder="Buscar Livros" />
       </Header>
 
       <FlatList
