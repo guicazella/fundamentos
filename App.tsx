@@ -1,20 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import styled from 'styled-components/native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <Container>
+      <PetText>Rex - Dog</PetText>
+      <PetText>Mia - Cat</PetText>
+      <PetText>Tweety - Bird</PetText>
+      <PetText>Thor - Dog</PetText>
+      <PetText>Luna - Cat</PetText>
       <StatusBar style="auto" />
-    </View>
+    </Container>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Container = styled.View`
+  flex: 1;
+  background-color: #00defc;
+  align-items: center;
+  justify-content: center;
+`;
+
+const PetText = styled.Text``;
