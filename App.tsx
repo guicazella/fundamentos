@@ -1,24 +1,102 @@
 import { StatusBar } from 'expo-status-bar';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import styled from 'styled-components/native';
+
+type Product = {
+  id: string;
+  title: string;
+  price: number;
+};
+
+const products: Product[] = [
+  {
+    id: "1",
+    title: "Tenis",
+    price: 150,
+  }
+]
 
 export default function App() {
   return (
-    <Container>
-      <PetText>Rex - Dog</PetText>
-      <PetText>Mia - Cat</PetText>
-      <PetText>Tweety - Bird</PetText>
-      <PetText>Thor - Dog</PetText>
-      <PetText>Luna - Cat</PetText>
-      <StatusBar style="auto" />
-    </Container>
+    <ScreenContainer>
+      <Header>
+        <ScreenTitle>Loja</ScreenTitle>
+        <SearchInput placeholder="Buscar produtos" />
+      </Header>
+
+      <FlatList
+        data={products}
+        keyExtractor={(item) => item.id}
+        renderItem={() => (
+          <ProductCard>
+            <ProductInfo>
+              <ProductTitle />
+              <Price />
+            </ProductInfo>
+          </ProductCard>
+        )}
+      />
+    </ScreenContainer>
   );
 }
 
-const Container = styled.View`
+const ScreenContainer = styled(SafeAreaView)`
   flex: 1;
-  background-color: #00defc;
-  align-items: center;
-  justify-content: center;
+  background-color: #fff;
 `;
 
-const PetText = styled.Text``;
+const Header = styled.View`
+  padding: 16px;
+  border-bottom-width: 1px;
+  border-bottom-color: #222;
+`;
+
+const ScreenTitle = styled.Text`
+  font-size: 24px;
+  color: #222;
+  margin-bottom: 12px;
+`;
+
+const SearchInput = styled.TextInput`
+  border-width: 1px;
+  border-color: #bbb;
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 16px;
+  margin-bottom: 12px;
+`;
+
+const ProductCard = styled.Pressable`
+  flex: 1;
+`;
+
+const ProductInfo = styled.View`
+  padding-top: 8px;
+`;
+
+const ProductTitle = styled.Text`
+  font-size: 13px;
+  color: #555;
+  background-color: #eee;
+  padding: 4px 6px;
+  border-radius: 4px;
+`;
+
+const Price = styled.Text`
+  font-size: 18px;
+  color: #222;
+  margin-top: 8px;
+`;
+
+const BottomBar = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 8px;
+`;
+
+const BottomBarButton = styled.Pressable`
+  width: 40px;
+  height: 40px;
+`;
+
